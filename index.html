@@ -55,13 +55,23 @@
         <button type="button" class="btn btn-primary btn-lg" onclick="getFood()">Get Food!</button>
       </div>
       <div class="row justify-content-center p-3">
-        <div class="btn-group" id="btnGrp" role="group" aria-label="Basic example">
+        <!-- <div class="btn-group" id="btnGrp" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-primary" onclick="filterFoodDisplay('All')">All</button>
           <button type="button" class="btn btn-primary" onclick="filterFoodDisplay('Full Meals')">Full Meals</button>
           <button type="button" class="btn btn-primary" onclick="filterFoodDisplay('Coffee-Tea')">Coffee Tea</button>
           <button type="button" class="btn btn-primary" onclick="filterFoodDisplay('Desserts')">Desserts</button>
           <button type="button" class="btn btn-primary" onclick="filterFoodDisplay('Ice-Creams')">Ice-Cream</button>
           <button type="button" class="btn btn-primary" onclick="filterFoodDisplay('Undefined')">Others</button>
+        </div> -->
+        <div class="col-4">
+          <select class="form-control" id="dropdownFilter" onchange="filterDropdown()">
+            <option value="All">All</option>
+            <option value="Full Meals">Full Meals</option>
+            <option value="Coffee-Tea">Coffee & Tea</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Ice-Creams">Ice-Cream</option>
+            <option value="Undefined">Others</option>
+          </select>
         </div>
       </div>
       <div class="row justify-content-center">
@@ -167,6 +177,12 @@
         }
         document.getElementById("resultRow").innerHTML = resultDisplay;
       }
+    }
+
+    function filterDropdown() {
+      var e = document.getElementById("dropdownFilter");
+      var value = e.options[e.selectedIndex].value;
+      filterFoodDisplay(value);
     }
 
     function filterFoodDisplay(resType) {
