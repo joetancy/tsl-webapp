@@ -150,7 +150,7 @@
   function getFood() {
     var progressBar = document.getElementById('progressBar');
     progressBar.style.display = 'block';
-    var url = "https://cors-anywhere.herokuapp.com/https://appsbytsl.com/API/V1/Nearby/Food/H4D3S/" + geoPostion.lat + "/" + geoPostion.lng + "/1";
+    var url = "https://cors-anywhere.herokuapp.com/https://appsbytsl.com/API/V1/Nearby/EatBook/T5L2807/" + geoPostion.lat + "/" + geoPostion.lng + "/1";
     fetch(url).then(function (response) {
       return response.json();
     }).then(function (data) {
