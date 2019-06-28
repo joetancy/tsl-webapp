@@ -7,23 +7,27 @@
   <title>EatBook API</title>
   <meta name="description" content="EatBook API Sample for Internship">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous">
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css"
-  />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <style>
     #map {
       height: 500px;
     }
+
     body {
       /* background image from https://www.toptal.com/designers/subtlepatterns/*/
       background-image: url("doodles.png");
@@ -41,12 +45,12 @@
           <p class="lead">
             <em>JiakApa?</em> finds the nearest restaurants to you!</p>
           <em>
-              <strong>Jiak</strong>
-            </em> means
+            <strong>Jiak</strong>
+          </em> means
           <em>eat</em> in the dialect of Hokkien,
           <em>
-              <strong>Apa?</strong>
-            </em> is
+            <strong>Apa?</strong>
+          </em> is
           <em>what?</em> in Behasa Melayu.
         </div>
       </div>
@@ -66,123 +70,155 @@
         </div> -->
       <div class="col-sm-6">
         <select class="form-control" id="dropdownFilter" onchange="filterDropdown()">
-            <option value="All">All</option>
-            <option value="Full Meals">Full Meals</option>
-            <option value="Coffee-Tea">Coffee & Tea</option>
-            <option value="Desserts">Desserts</option>
-            <option value="Ice-Creams">Ice-Cream</option>
-            <option value="Undefined">Others</option>
-          </select>
+          <option value="All">All</option>
+          <option value="Full Meals">Full Meals</option>
+          <option value="Coffee-Tea">Coffee & Tea</option>
+          <option value="Desserts">Desserts</option>
+          <option value="Ice-Creams">Ice-Cream</option>
+          <option value="Undefined">Others</option>
+        </select>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="progress" id="progressBar" style="display:none;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-          aria-valuemax="100" style="width: 300px;"></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+          aria-valuemin="0" aria-valuemax="100" style="width: 300px;"></div>
       </div>
     </div>
     <div class="row justify-content-center p-4" id="resultRow"></div>
   </div>
   <nav class="navbar navbar-light bg-light justify-content-center text-muted">
-    This is a sample application for the purpose of The Smart Local internship interview. The API is provided by The Smart Local.
+    This is a sample application for the purpose of The Smart Local internship interview. The API is provided by The
+    Smart Local.
     © Copyright by Joe Tan
   </nav>
 </body>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
 <script>
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      marker.setPosition(pos);
+      map.setCenter(pos);
+      geoPostion = pos;
+    }, function () {
+      handleLocationError(true, marker, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, marker, map.getCenter());
+  }
+
+  function handleLocationError(browserHasGeolocation, marker, pos) {
+    marker.setPosition(pos);
+    marker.setTitle(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+  }
+
+  var platform = new H.service.Platform({
+    'app_id': 'G95WGOGpE1f6SOAvEYbw',
+    'app_code': 'qH4GDZ9uICeUllGEyBkl5g'
+  });
+
   var geoPostion = {
     lat: 0,
     lng: 0
   };
-  var map,
-    infoWindow,
-    marker;
-  function initMap() {
-    infoWindow = new google.maps.InfoWindow;
-    map = new google.maps.Map(document.getElementById('map'), {
+
+  // Obtain the default map types from the platform object:
+  var defaultLayers = platform.createDefaultLayers();
+
+  // Instantiate (and display) a map object:
+  var map = new H.Map(
+    document.getElementById('map'),
+    defaultLayers.normal.map, {
+      zoom: 12,
       center: {
         lat: 1.350446,
         lng: 103.821130
-      },
-      zoom: 12
+      }
     });
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        marker.setPosition(pos);
-        map.setCenter(pos);
-        geoPostion = pos;
-      }, function () {
-        handleLocationError(true, marker, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, marker, map.getCenter());
-    }
-    marker = new google.maps.Marker({
-      position: {
-        lat: 1.350446,
-        lng: 103.821130
-      },
-      map: map
-    });
-    map.addListener('click', function (e) {
-      marker.setPosition(e.latLng);
-      map.setCenter(e.latLng);
-      map.setZoom(15);
-      geoPostion.lat = e.latLng.lat();
-      geoPostion.lng = e.latLng.lng();
-    });
-  }
-  function handleLocationError(browserHasGeolocation, marker, pos) {
-    marker.setPosition(pos);
-    marker.setTitle(browserHasGeolocation
-      ? 'Error: The Geolocation service failed.'
-      : 'Error: Your browser doesn\'t support geolocation.');
-  }
+
+  var marker = new H.map.Marker({
+    lat: 1.350446,
+    lng: 103.821130
+  });
+  map.addObject(marker);
+  var mapEvents = new H.mapevents.MapEvents(map);
+
+  map.addEventListener('tap', function (evt) {
+    map.removeObject(marker)
+    var coord = map.screenToGeo(evt.currentPointer.viewportX, evt.currentPointer.viewportY);
+    geoPostion = coord;
+    marker = new H.map.Marker(geoPostion);
+    map.addObject(marker);
+    map.setCenter(coord);
+    map.setZoom(15);
+  });
+
+  var behavior = new H.mapevents.Behavior(mapEvents);
+
+
   var returnedResults;
+
   function getFood() {
     var progressBar = document.getElementById('progressBar');
     progressBar.style.display = 'block';
-    var url = "https://cors-anywhere.herokuapp.com/https://appsbytsl.com/API/V1/Nearby/Food/t5LD3v/" + geoPostion.lat + "/" + geoPostion.lng + "/1";
+    var url = "https://cors-anywhere.herokuapp.com/https://appsbytsl.com/API/V1/Nearby/Food/t5LD3v/" + geoPostion.lat +
+      "/" + geoPostion.lng + "/1";
     fetch(url).then(function (response) {
       return response.json();
     }).then(function (data) {
       progressBar.style.display = 'none';
       returnedResults = data;
       if (returnedResults.length == 0) {
-        document.getElementById("resultRow").innerHTML = '<div class="alert alert-danger" role="alert">Your location yields no results!</div>';
+        document.getElementById("resultRow").innerHTML =
+          '<div class="alert alert-danger" role="alert">Your location yields no results!</div>';
       } else {
         getFoodDisplay(returnedResults);
       }
     });
   }
+
   function getFoodDisplay(returnedResults) {
     if (returnedResults.length == 0) {
-      document.getElementById("resultRow").innerHTML = '<div class="alert alert-danger" role="alert">Your filter yields no results!</div>';
+      document.getElementById("resultRow").innerHTML =
+        '<div class="alert alert-danger" role="alert">Your filter yields no results!</div>';
     } else {
       var resultDisplay = "";
       for (var i = 0; i < returnedResults.length; i++) {
         var website = "";
         var instagram = "";
         if (returnedResults[i].Website != "#" && returnedResults[i].Website != "-") {
-          website = "<a href='" + returnedResults[i].Website + "' class='card-link' target='_blank'><i class='fa fa-link' aria-hidden='true'></i></a>"
+          website = "<a href='" + returnedResults[i].Website +
+            "' class='card-link' target='_blank'><i class='fa fa-link' aria-hidden='true'></i></a>"
         }
         if (returnedResults[i].Instagram != "-" && returnedResults[i].Instagram != "#") {
-          instagram = "<a href='" + returnedResults[i].Instagram + "' class='card-link' target='_blank'><i class='fa fa-instagram' aria-hidden='true'></i></a>"
+          instagram = "<a href='" + returnedResults[i].Instagram +
+            "' class='card-link' target='_blank'><i class='fa fa-instagram' aria-hidden='true'></i></a>"
         }
-        resultDisplay += "<div class='card bg-light m-2' style='width: 20rem;'><div class='card-body'><h5 class='card-title'>" + returnedResults[i].EntryName + "</h5><h6 class='card-subtitle mb-2 text-muted'>" + returnedResults[i].Category + "</h6><p class='card-text'>" + returnedResults[i].EntryAddress + "</p>" + website + instagram + "</div></div>"
+        resultDisplay +=
+          "<div class='card bg-light m-2' style='width: 20rem;'><div class='card-body'><h5 class='card-title'>" +
+          returnedResults[i].EntryName + "</h5><h6 class='card-subtitle mb-2 text-muted'>" + returnedResults[i]
+          .Category + "</h6><p class='card-text'>" + returnedResults[i].EntryAddress + "</p>" + website + instagram +
+          "</div></div>"
       }
       document.getElementById("resultRow").innerHTML = resultDisplay;
     }
   }
+
   function filterDropdown() {
     var e = document.getElementById("dropdownFilter");
     var value = e.options[e.selectedIndex].value;
     filterFoodDisplay(value);
   }
+
   function filterFoodDisplay(resType) {
     if (resType == 'All') {
       getFoodDisplay(returnedResults);
